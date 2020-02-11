@@ -149,37 +149,10 @@ export default class Render {
 
         console.log(" ");
         console.log('%c       ', 'font-size: 100px; background: url(https://minerender.org/img/minerender.svg) no-repeat;');
-        console.log("MineRender/" + (renderObj.renderType || renderObj.constructor.name) + "/" + VERSION);
-        console.log((PRODUCTION ? "PRODUCTION" : "DEVELOPMENT") + " build");
-        console.log("Built @ " + BUILD_DATE);
+        console.log("MineRender/" + "[VERSION REDACTED]");
+        console.log("Build Redacted");
+        console.log("Built @ " + Date.now());
         console.log(" ");
-
-        if (renderObj.options.sendStats) {
-            // Send stats
-
-            let iframe = false;
-            try {
-                iframe = window.self !== window.top;
-            } catch (e) {
-                return true;
-            }
-            let hostname;
-            try{
-                hostname = new URL(iframe ? document.referrer : window.location).hostname;
-            }catch (e) {
-                console.warn("Failed to get hostname");
-            }
-
-            $.post({
-                url: "https://minerender.org/stats.php",
-                data: {
-                    action: "init",
-                    type: renderObj.renderType,
-                    host: hostname,
-                    source: (iframe ? "iframe" : "javascript")
-                }
-            });
-        }
 
         // Scene INIT
         let scene = new THREE.Scene();
@@ -196,7 +169,7 @@ export default class Render {
             camera.zoom = renderObj.options.camera.zoom;
         }
 
-        let renderer = new THREE.WebGLRenderer({alpha: true, antialias: true, preserveDrawingBuffer: true});
+        let renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, preserveDrawingBuffer: true });
         renderObj._renderer = renderer;
         renderer.setSize((renderObj.options.canvas.width || window.innerWidth), (renderObj.options.canvas.height || window.innerHeight));
         renderer.setClearColor(0x000000, 0);

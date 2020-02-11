@@ -2,7 +2,7 @@
  * Default asset root
  * @type {string}
  */
-export const DEFAULT_ROOT = "https://assets.mcasset.cloud/1.13";
+export const DEFAULT_ROOT = "https://mcassets.craftlink.xyz/";
 /**
  * Texture cache
  * @type {Object.<string,string>}

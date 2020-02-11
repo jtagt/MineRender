@@ -279,7 +279,7 @@ let applyCubeTextureToGeometry = function (geometry, texture, uv, mirror, textur
 
 function getEntityModel(entity) {
     return new Promise((resolve, reject) => {
-        $.ajax("https://minerender.org/res/models/entities/" + entity + ".json")
+        $.ajax("https://mcassets.craftlink.xyz/res/models/entities/" + entity + ".json")
             .done((data) => {
                 resolve(data);
             })
